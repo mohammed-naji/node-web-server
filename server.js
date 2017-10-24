@@ -19,14 +19,6 @@ app.use( (req, res, next) => {
         });
         next();
 });
-
-// app.use( (req, res, next) => {
-//         res.render('maintain.hbs', {
-//                 pageTitle: 'Maintinance Mode ',
-//                 welcomeMessage: 'We will back very soon :)'
-//         })
-// });
-
 hbs.registerHelper('getYear', () => {
         return new Date().getFullYear();
 })
@@ -36,15 +28,7 @@ hbs.registerHelper('scremit',(text) => {
 }) 
 
 app.get('/', (req, res) => {
-        //res.send('<h1>Hello Express!</h1>');
-        // res.send({
-        //         name: 'Mohammed',
-        //         likes: [
-        //                 'football',
-        //                 'sqm'
-        //         ]
-        // })
- 
+
         res.render('home.hbs',{
                 pageTitle: 'Home ',
                 welcomeMessage: 'Welcone to my new website'
@@ -53,11 +37,17 @@ app.get('/', (req, res) => {
 
 
 app.get('/about', (req, res) => {
-        //res.send('<h1>About Page</h1>');
         res.render('about.hbs', {
                 pageTitle: 'About Page'
         });
-})
+});
+
+app.get('/projects', (req, res) => {
+        res.render('projects.hbs', {
+                pageTitle: 'Projects Page',
+                welcomeMessage: 'Welcone to project page'
+        });
+});
 
 app.get('/bad', (req, res) => {
         res.send({
